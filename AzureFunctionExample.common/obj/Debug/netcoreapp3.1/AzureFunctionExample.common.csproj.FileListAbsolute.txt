@@ -1,0 +1,10 @@
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\bin\Debug\netcoreapp3.1\AzureFunctionExample.common.deps.json
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\bin\Debug\netcoreapp3.1\AzureFunctionExample.common.dll
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\bin\Debug\netcoreapp3.1\AzureFunctionExample.common.pdb
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.csproj.AssemblyReference.cache
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.AssemblyInfoInputs.cache
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.AssemblyInfo.cs
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.csproj.CoreCompileInputs.cache
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.dll
+C:\Users\crist\Desktop\ITM 2021-2\OPTIMIZACION\AzureFunctionExample\AzureFunctionExample.common\obj\Debug\netcoreapp3.1\AzureFunctionExample.common.pdb
