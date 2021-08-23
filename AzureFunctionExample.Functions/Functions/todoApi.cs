@@ -24,8 +24,6 @@ namespace AzureFunctionExample.Functions.Functions
         {
             log.LogInformation("Recieved a new todo.");
 
-            string name = req.Query["name"];
-
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
 
             Todo todo = JsonConvert.DeserializeObject<Todo>(requestBody);
@@ -80,7 +78,7 @@ namespace AzureFunctionExample.Functions.Functions
             TableOperation findOperation = TableOperation.Retrieve<TodoEntity>("TODO", id);
             TableResult findResult = await todoTable.ExecuteAsync(findOperation);
 
-            if(findResult.Result == null)
+            if (findResult.Result == null)
             {
                 return new BadRequestObjectResult(new Response
                 {
@@ -110,5 +108,90 @@ namespace AzureFunctionExample.Functions.Functions
                 Result = todoEntity
             });
         }
+
+        [FunctionName(nameof(getAllTodos))]
+        public static async Task<IActionResult> getAllTodos(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todo")] HttpRequest req,
+            [Table("todo", Connection = "AzureWebJobsStorage")] CloudTable todoTable,
+            ILogger log)
+        {
+            log.LogInformation("Get all todos received.");
+
+            TableQuery<TodoEntity> query = new TableQuery<TodoEntity>();
+            TableQuerySegment<TodoEntity> todos = await todoTable.ExecuteQuerySegmentedAsync(query, null);
+
+            string message = "Rtrieved all todos.";
+            log.LogInformation(message);
+
+            return new OkObjectResult(new Response
+            {
+                IsSucces = true,
+                Message = message,
+                Result = todos
+            });
+        }
+
+        [FunctionName(nameof(deleteTodo))]
+        public static async Task<IActionResult> deleteTodo(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "todo/{id}")] HttpRequest req,
+            [Table("todo", "TODO", "{id}", Connection = "AzureWebJobsStorage")] TodoEntity todoEntity,
+            [Table("todo", Connection = "AzureWebJobsStorage")] CloudTable todoTable,
+            string id,
+            ILogger log)
+        {
+            log.LogInformation($"Delete todo: {id} received.");
+
+            if (todoEntity == null)
+            {
+                return new BadRequestObjectResult(new Response
+                {
+                    IsSucces = false,
+                    Message = "Todo not found."
+                });
+            }
+
+            await todoTable.ExecuteAsync(TableOperation.Delete(todoEntity));
+            //string message = $"Todo: {id}, received.";
+            string message = $"Todo: {todoEntity.RowKey}, deleted.";
+            log.LogInformation(message);
+
+            return new OkObjectResult(new Response
+            {
+                IsSucces = true,
+                Message = message,
+                Result = todoEntity
+            });
+        }
+
+        [FunctionName(nameof(getTodoById))]
+        public static IActionResult getTodoById(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "todo/{id}")] HttpRequest req,
+            [Table("todo", "TODO", "{id}", Connection = "AzureWebJobsStorage")] TodoEntity todoEntity,
+            string id,
+            ILogger log)
+        {
+            log.LogInformation($"Get todo by id: {id} received.");
+
+            if (todoEntity == null)
+            {
+                return new BadRequestObjectResult(new Response
+                {
+                    IsSucces = false,
+                    Message = "Todo not found."
+                });
+            }
+
+            //string message = $"Todo: {id}, received.";
+            string message = $"Todo: {todoEntity.RowKey}, received.";
+            log.LogInformation(message);
+
+            return new OkObjectResult(new Response
+            {
+                IsSucces = true,
+                Message = message,
+                Result = todoEntity
+            });
+        }
+
     }
 }
