@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace AzureFunctionExample.Functions.Functions
 {
-    public static class ScheduleFunction
+    public static class ScheduledFunction
     {
-        [FunctionName("ScheduleFunction")]
+        [FunctionName("ScheduledFunction")]
         public static async Task Run(
             //Delete task if 'isCompleted' = true, every 2 minutes
             [TimerTrigger("0 */2 * * * *")] TimerInfo myTimer,

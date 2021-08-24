@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace AzureFunctionExample.Functions.Functions
 {
-    public static class todoApi
+    public static class TodoApi
     {
         [FunctionName(nameof(CreateTodo))]
         public static async Task<IActionResult> CreateTodo(
